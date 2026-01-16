@@ -35,19 +35,3 @@ function handleBulkDownload(images) {
         }, index * 200); // Stagger downloads to avoid overwhelming the browser
     });
 }
-
-// Optional: Add context menu support (right-click to download images)
-chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
-        id: 'downloadAllImages',
-        title: 'Download All Images',
-        contexts: ['page']
-    });
-});
-
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === 'downloadAllImages') {
-        // Open the popup or trigger image collection
-        chrome.action.openPopup();
-    }
-});
