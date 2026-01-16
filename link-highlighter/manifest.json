@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Link Highlighter & SEO Inspector",
+  "version": "1.0.0",
+  "description": "Highlight and analyze all links on a webpage with SEO attributes - internal, external, dofollow, nofollow, sponsored, and UGC links",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "toggle-highlight": {
+      "suggested_key": {
+        "default": "Alt+Shift+L",
+        "mac": "Alt+Shift+L"
+      },
+      "description": "Toggle link highlighting on/off"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

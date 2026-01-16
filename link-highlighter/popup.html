@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Highlighter & SEO Inspector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">🔗 Link Inspector</h1>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggleHighlight" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="subtitle">SEO Link Analysis Tool</p>
+    </header>
+
+    <!-- Summary Section -->
+    <section class="summary-section">
+      <h2 class="section-title">Link Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-card" data-type="internal-dofollow">
+          <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">✓</div>
+          <div class="card-content">
+            <span class="card-label">Internal Dofollow</span>
+            <span class="card-count" id="count-internal-dofollow">0</span>
+          </div>
+        </div>
+
+        <div class="summary-card" data-type="internal-nofollow">
+          <div class="card-icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">⚠</div>
+          <div class="card-content">
+            <span class="card-label">Internal Nofollow</span>
+            <span class="card-count" id="count-internal-nofollow">0</span>
+          </div>
+        </div>
+
+        <div class="summary-card" data-type="external-dofollow">
+          <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">↗</div>
+          <div class="card-content">
+            <span class="card-label">External Dofollow</span>
+            <span class="card-count" id="count-external-dofollow">0</span>
+          </div>
+        </div>
+
+        <div class="summary-card" data-type="external-nofollow">
+          <div class="card-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">✗</div>
+          <div class="card-content">
+            <span class="card-label">External Nofollow</span>
+            <span class="card-count" id="count-external-nofollow">0</span>
+          </div>
+        </div>
+
+        <div class="summary-card" data-type="sponsored">
+          <div class="card-icon" style="background: linear-gradient(135deg, #a855f7, #9333ea);">$</div>
+          <div class="card-content">
+            <span class="card-label">Sponsored</span>
+            <span class="card-count" id="count-sponsored">0</span>
+          </div>
+        </div>
+
+        <div class="summary-card" data-type="ugc">
+          <div class="card-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">👤</div>
+          <div class="card-content">
+            <span class="card-label">UGC Links</span>
+            <span class="card-count" id="count-ugc">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Controls -->
+    <section class="filter-section">
+      <h2 class="section-title">Filters</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Links</button>
+        <button class="filter-btn" data-filter="external">External Only</button>
+        <button class="filter-btn" data-filter="nofollow">Nofollow Only</button>
+        <button class="filter-btn" data-filter="sponsored">Sponsored Only</button>
+      </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="action-section">
+      <button class="action-btn primary" id="exportCsv">
+        <span class="btn-icon">📥</span>
+        Export CSV
+      </button>
+      <button class="action-btn secondary" id="copyData">
+        <span class="btn-icon">📋</span>
+        Copy Data
+      </button>
+    </section>
+
+    <!-- Legend -->
+    <section class="legend-section">
+      <h2 class="section-title">Color Legend</h2>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-color" style="background: #10b981;"></span>
+          <span class="legend-label">Internal Dofollow</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background: #f97316;"></span>
+          <span class="legend-label">Internal Nofollow</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background: #3b82f6;"></span>
+          <span class="legend-label">External Dofollow</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background: #ef4444;"></span>
+          <span class="legend-label">External Nofollow</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background: #a855f7;"></span>
+          <span class="legend-label">Sponsored</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background: #ec4899;"></span>
+          <span class="legend-label">UGC</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">Use <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> to toggle</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
