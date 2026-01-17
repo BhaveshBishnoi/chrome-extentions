@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Inspector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="header-icon">🎨</div>
+      <div class="header-text">
+        <h1>CSS Inspector</h1>
+        <p>Live CSS Playground</p>
+      </div>
+    </div>
+
+    <div class="popup-content">
+      <div class="status-section">
+        <div class="status-indicator">
+          <div class="status-dot inactive"></div>
+          <span class="status-text">Inactive</span>
+        </div>
+        <button class="toggle-btn" id="toggleBtn">
+          <span>Start Inspector</span>
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="shortcuts-section">
+        <h3>Keyboard Shortcuts</h3>
+        <div class="shortcut-list">
+          <div class="shortcut-item">
+            <span class="shortcut-key">Ctrl+Shift+I</span>
+            <span class="shortcut-desc">Toggle Inspector</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-key">Ctrl+Z</span>
+            <span class="shortcut-desc">Undo</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-key">Ctrl+Shift+Z</span>
+            <span class="shortcut-desc">Redo</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-key">Arrow Keys</span>
+            <span class="shortcut-desc">Navigate DOM</span>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-key">Esc</span>
+            <span class="shortcut-desc">Deselect/Close</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-section">
+        <p class="info-text">
+          Click any element on the page to inspect and edit its CSS properties in real-time.
+        </p>
+        <p class="privacy-text">
+          🔒 All changes are client-side only. No data is collected or sent externally.
+        </p>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      <a href="https://github.com" target="_blank" class="footer-link">Documentation</a>
+      <span class="version">v1.0.0</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

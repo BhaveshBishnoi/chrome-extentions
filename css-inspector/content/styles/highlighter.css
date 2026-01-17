@@ -1,0 +1,96 @@
+/* Element Highlighter Overlay Styles */
+
+/* Main highlight overlay */
+.css-inspector-highlight {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483645;
+    outline: 2px solid rgba(99, 102, 241, 0.8);
+    background: rgba(99, 102, 241, 0.1);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: highlightPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes highlightPulse {
+
+    0%,
+    100% {
+        outline-color: rgba(99, 102, 241, 0.8);
+    }
+
+    50% {
+        outline-color: rgba(139, 92, 246, 0.8);
+    }
+}
+
+/* Box model overlays */
+.css-inspector-box-margin {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483644;
+    background: rgba(251, 146, 60, 0.2);
+    border: 1px solid rgba(251, 146, 60, 0.6);
+    transition: all 0.15s ease;
+}
+
+.css-inspector-box-border {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483644;
+    background: rgba(234, 179, 8, 0.15);
+    border: 1px solid rgba(234, 179, 8, 0.5);
+    transition: all 0.15s ease;
+}
+
+.css-inspector-box-padding {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483644;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.6);
+    transition: all 0.15s ease;
+}
+
+.css-inspector-box-content {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483644;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.6);
+    transition: all 0.15s ease;
+}
+
+/* Dimensions label */
+.css-inspector-dimensions {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2147483646;
+    background: rgba(15, 15, 25, 0.95);
+    backdrop-filter: blur(10px);
+    color: #e4e4e7;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    transition: all 0.15s ease;
+}
+
+/* Fade in animation */
+.css-inspector-highlight,
+.css-inspector-box-margin,
+.css-inspector-box-border,
+.css-inspector-box-padding,
+.css-inspector-box-content,
+.css-inspector-dimensions {
+    opacity: 0;
+    animation: fadeIn 0.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
