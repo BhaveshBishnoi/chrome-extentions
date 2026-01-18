@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 10px;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        .info {
+            background: #e0e7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🍪 Cookie & Storage Viewer - Test Page</h1>
+
+        <div class="info">
+            <strong>Instructions:</strong>
+            <ol>
+                <li>Click the buttons below to populate storage data</li>
+                <li>Open the Cookie & Storage Viewer extension</li>
+                <li>Verify all data appears correctly in the extension</li>
+            </ol>
+        </div>
+
+        <h2>Actions</h2>
+        <button onclick="createCookies()">Create Test Cookies</button>
+        <button onclick="createLocalStorage()">Create LocalStorage Data</button>
+        <button onclick="createSessionStorage()">Create SessionStorage Data</button>
+        <button onclick="clearAll()">Clear All Data</button>
+
+        <h2>Current Storage Status</h2>
+        <pre id="status">Click buttons above to populate data...</pre>
+    </div>
+
+    <script>
+        function createCookies() {
+            // Create various test cookies
+            document.cookie = "test_cookie=simple_value; path=/";
+            document.cookie = "auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; path=/; secure";
+            document.cookie = "session_id=abc123def456; path=/";
+            document.cookie = "user_pref=theme_dark; path=/; max-age=86400";
+            document.cookie = "analytics=ga_tracking_123; path=/; SameSite=Lax";
+
+            updateStatus();
+            alert('✓ Created 5 test cookies');
+        }
+
+        function createLocalStorage() {
+            // Create various test data
+            localStorage.setItem('username', 'john_doe');
+            localStorage.setItem('auth_token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test');
+            localStorage.setItem('user_settings', JSON.stringify({
+                theme: 'dark',
+                language: 'en',
+                notifications: true,
+                preferences: {
+                    fontSize: 14,
+                    layout: 'grid'
+                }
+            }));
+            localStorage.setItem('api_key', 'sk_test_1234567890abcdef');
+            localStorage.setItem('large_data', 'x'.repeat(15000)); // Large value
+            localStorage.setItem('simple_flag', 'true');
+
+            updateStatus();
+            alert('✓ Created 6 localStorage items');
+        }
+
+        function createSessionStorage() {
+            // Create session-specific data
+            sessionStorage.setItem('temp_id', 'session_' + Date.now());
+            sessionStorage.setItem('form_data', JSON.stringify({
+                name: 'Test User',
+                email: 'test@example.com'
+            }));
+            sessionStorage.setItem('navigation_state', 'step_2');
+            sessionStorage.setItem('cart_items', '["item1", "item2", "item3"]');
+
+            updateStatus();
+            alert('✓ Created 4 sessionStorage items');
+        }
+
+        function clearAll() {
+            // Clear cookies
+            document.cookie.split(";").forEach(c => {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
+
+            // Clear storage
+            localStorage.clear();
+            sessionStorage.clear();
+
+            updateStatus();
+            alert('✓ Cleared all data');
+        }
+
+        function updateStatus() {
+            const cookies = document.cookie.split(';').filter(c => c.trim());
+            const status = `
+Cookies: ${cookies.length} items
+${cookies.map(c => '  - ' + c.trim()).join('\n')}
+
+LocalStorage: ${localStorage.length} items
+${Object.keys(localStorage).map(k => `  - ${k}: ${localStorage.getItem(k).substring(0, 50)}...`).join('\n')}
+
+SessionStorage: ${sessionStorage.length} items
+${Object.keys(sessionStorage).map(k => `  - ${k}: ${sessionStorage.getItem(k).substring(0, 50)}...`).join('\n')}
+      `.trim();
+
+            document.getElementById('status').textContent = status || 'No data stored';
+        }
+
+        // Update status on load
+        updateStatus();
+    </script>
+</body>
+
+</html>

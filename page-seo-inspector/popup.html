@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page SEO Snapshot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="title">
+          <svg class="logo" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 11L11 13L15 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Page SEO Snapshot
+        </h1>
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1V3M12 21V23M23 12H21M3 12H1M20.07 20.07L18.73 18.73M5.27 5.27L3.93 3.93M20.07 3.93L18.73 5.27M5.27 18.73L3.93 20.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Loading State -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p>Analyzing page SEO...</p>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state" id="errorState" style="display: none;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h3>Analysis Failed</h3>
+      <p id="errorMessage">Unable to analyze this page.</p>
+    </div>
+
+    <!-- Results Container -->
+    <div class="results" id="results" style="display: none;">
+      <!-- Page URL -->
+      <div class="url-bar">
+        <span class="url-text" id="pageUrl"></span>
+        <button class="copy-btn" data-copy="url" title="Copy URL">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Overall Score -->
+      <div class="score-card">
+        <div class="score-value" id="overallScore">--</div>
+        <div class="score-label">SEO Score</div>
+      </div>
+
+      <!-- Sections -->
+      <div class="sections" id="sections"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
